@@ -1,13 +1,19 @@
 let images = [{
         url: "../images/jpeg/rostov-on-don_Admiral.jpg",
-        title: "Rostov-on-Don, Admiral",
+        city: 'Rostov-on-Don LCD admiral',
+        repairTime: '3.5 months',
+        apartmentArea: '81 m2',
     }, {
         url: "../images/jpeg/sochi-thieves.jpg",
-        title: "Sochi Thieves",
+        city: 'Sochi Thieves',
+        repairTime: '4 months',
+        apartmentArea: '105 m2',
     }, {
         url: "../images/jpeg/rostov-on-don_patriotic.jpg",
-        title: "Rostov-on-Don Patriotic",
-}];
+        city: 'Rostov-on-Don Patriotic',
+        repairTime: '3 months',
+        apartmentArea: '93 m2',
+    }];
 
 function getSlider() {
     if (!images || !images.length) return;
@@ -15,6 +21,7 @@ function getSlider() {
     let sliderImg = document.querySelector(".slider__img");
     let sliderArrows = document.querySelector(".slider__arrows");
     let sliderDots = document.querySelector(".slider__dots");
+    let sliderTitle = document.querySelector(".slider__picture-list");
     
     initImages();
     initArrows();
@@ -48,6 +55,9 @@ function getSlider() {
         sliderImg.querySelector(".n" + num).classList.add("active");
         sliderDots.querySelector(".active").classList.remove("active");
         sliderDots.querySelector(".n" + num).classList.add("active");
+        sliderTitle.querySelector(".active").classList.remove("active");
+        sliderTitle.querySelector(".n" + num).classList.add("active");
+        changeSpan(num)
     }
 
     function initDots() {
@@ -63,22 +73,28 @@ function getSlider() {
     }
     
     function initTitles() {
-        let titleDiv = `<div class="slider__images-title">${images[0].title}</div>`;
-        sliderImages.innerHTML += cropTitle(titleDiv, 50);
+        images.forEach((image, index) => {
+        let item = `<li class="slider__picture-item n${index} ${index === 0? "active" : ""}" data-index="${index}"><span class="slider__picture-text">Rostov-on-Don, Admiral</span></li>`;
+        sliderTitle.innerHTML += item;
+        });
+        let itemSecond = sliderTitle.querySelectorAll(".slider__picture-text")[1];
+        itemSecond.textContent = "Sochi Thieves";
+        let itemThird = sliderTitle.querySelectorAll(".slider__picture-text")[2];
+        itemThird.textContent = "Rostov-on-Don Patriotic";
+        sliderTitle.querySelectorAll(".slider__picture-item").forEach(item => {
+        item.addEventListener("click", function() {
+            moveSlider(this.dataset.index);
+        })
+        })
     }
-    
-    function changeTitle(num) {
-        if (!images[num].title) return;
-        let sliderTitle = sliderImages.querySelector(".slider__images-title");
-        sliderTitle.innerText = cropTitle(images[num].title, 50);
-    }
-    
-    function cropTitle(title, size) {
-        if (title.length <= size) {
-        return title;
-        } else {
-        return title.substr(0, size) + "...";
-        }
+
+    function changeSpan(num) {
+        let sliderColumnCity = document.querySelector(".column-city");
+        let sliderColumnArea = document.querySelector(".column-area");
+        let sliderColumnTime = document.querySelector(".column-time");
+        sliderColumnCity.innerText = (images[num].city);
+        sliderColumnArea.innerText = (images[num].apartmentArea);
+        sliderColumnTime.innerText = (images[num].repairTime);
     }
 }
 

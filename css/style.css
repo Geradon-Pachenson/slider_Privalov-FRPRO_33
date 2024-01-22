@@ -165,6 +165,10 @@ a, button {
     max-width: 92px;
 }
 
+span.column-city {
+    min-height: 42.38px;
+}
+
 .slider__arrows {
     display: flex;
     gap: 29.5px;
@@ -222,7 +226,22 @@ a, button {
     text-transform: uppercase;
 }
 
-.slider__picture-item:first-child span {
+.slider__picture-text {
+    color: rgba(255, 255, 255, 0.30);
+    font-family: "YesevaOne-Regular", serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 138.6%;
+    text-transform: uppercase;
+}
+
+.slider__picture-item {
+    cursor: pointer;
+    transition: background 1s ease;
+}
+
+.slider__picture-item.active span {
     color: #E3B873;
     border-bottom: 1px solid #E3B873;
     padding-bottom: 6.68px;
