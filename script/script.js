@@ -1,15 +1,15 @@
 let images = [{
-        url: "../images/jpeg/rostov-on-don_Admiral.jpg",
+        url: "images/jpeg/rostov-on-don_Admiral.jpg",
         city: 'Rostov-on-Don LCD admiral',
         repairTime: '3.5 months',
         apartmentArea: '81 m2',
     }, {
-        url: "../images/jpeg/sochi-thieves.jpg",
+        url: "images/jpeg/sochi-thieves.jpg",
         city: 'Sochi Thieves',
         repairTime: '4 months',
         apartmentArea: '105 m2',
     }, {
-        url: "../images/jpeg/rostov-on-don_patriotic.jpg",
+        url: "images/jpeg/rostov-on-don_patriotic.jpg",
         city: 'Rostov-on-Don Patriotic',
         repairTime: '3 months',
         apartmentArea: '93 m2',
